@@ -1,0 +1,29 @@
+<div class="grid-container">
+  @for (produto of produtos; track produto){
+  <div class="grid-item">
+    <nz-card
+      style="width: 300px"
+      [nzCover]="coverTemplate"
+      [nzActions]="[actionEdit, actionEllipsis]"
+    >
+      <nz-card-meta
+        nzTitle="{{produto.name}}"
+        nzDescription="{{produto.description}}"
+        ><p>R$ {{produto.value}}</p></nz-card-meta
+      >
+    </nz-card>
+    <ng-template #coverTemplate>
+      <img
+        alt="example"
+        src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+      />
+    </ng-template>
+    <ng-template #actionEdit>
+      <nz-icon nzType="edit" />
+    </ng-template>
+    <ng-template #actionEllipsis>
+      <nz-icon nzType="ellipsis" />
+    </ng-template>
+  </div>
+  }
+</div>
