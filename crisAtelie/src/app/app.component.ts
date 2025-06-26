@@ -1,11 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { PrimeNG } from 'primeng/config';
-import { ColorPickerModule } from 'primeng/colorpicker';
+import { ButtonComponent } from './components/button/button.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ColorPickerModule],
+  imports: [RouterOutlet, ButtonComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
