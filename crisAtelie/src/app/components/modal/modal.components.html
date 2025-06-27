@@ -1,11 +1,15 @@
-<button nz-button [nzType]="'primary'" (click)="showModal()">
-  <span>{{titulo}}</span>
+<button nz-button [nzType]="buttonStyle" (click)="showModal()">
+  @if (titulo != undefined){
+    <span>{{titulo}}</span>
+  }@else{
+    <nz-icon [nzType]="buttonIcon" />
+  }
 </button>
 <nz-modal
   [(nzVisible)]="isVisible"
   nzCancelText="Cancelar"
   nzOkText="Salvar"
-  nzTitle="{{titulo}}"
+  nzTitle="{{label}}"
   [nzFooter]="null"
   (nzOnCancel)="handleCancel()"
 >
@@ -16,7 +20,7 @@
         <input
           nz-input
           name="nome"
-          ngModel
+          [ngModel]="tipo === 'editar' ? default?.name : ''"
           #nome="ngModel"
           placeholder="Informe nome do produto.."
         />
@@ -29,7 +33,7 @@
         <input
           nz-input
           name="descricao"
-          ngModel
+          [ngModel]="tipo === 'editar' ? default?.description : ''"
           #descricao="ngModel"
           placeholder="Informe a descrição do produto.."
         />
@@ -39,7 +43,7 @@
         <input
           nz-input
           name="valor"
-          ngModel
+          [ngModel]="tipo === 'editar' ? default?.value : ''"
           #valor="ngModel"
           placeholder="Informe o valor do produto.."
         />
