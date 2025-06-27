@@ -1,0 +1,10 @@
+ [nz-form]:not(.ant-form-inline):not(.ant-form-vertical) {
+        max-width: 600px;
+}
+
+.ant-btn-primary{
+   background-color: #FB758E!important;
+   border-color: #FB758E !important;
+   margin-left: 20px !important;
+   margin-top: 20px !important;
+}

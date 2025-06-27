@@ -1,0 +1,11 @@
+<a
+      nz-popconfirm
+      nzPopconfirmTitle="Você tem certeza que deseja deletar?"
+      nzPopconfirmPlacement="bottom"
+      (nzOnConfirm)="confirm(id)"
+      (nzOnCancel)="cancel(id)"
+      nzOkText = "Excluir"
+      nzCancelText= "Cancelar"
+    >
+      <nz-icon nzType="delete" nzTheme="outline" />
+</a>
