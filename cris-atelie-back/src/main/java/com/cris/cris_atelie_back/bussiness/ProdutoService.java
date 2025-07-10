@@ -9,7 +9,7 @@ import com.cris.cris_atelie_back.infrastructure.repository.IProduto;
 
 @Service
 public class ProdutoService {
-    public IProduto produtos;
+    public final IProduto produtos;
 
     public ProdutoService(IProduto produto){
         this.produtos = produto;

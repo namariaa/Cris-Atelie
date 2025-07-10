@@ -9,14 +9,14 @@
     >
       <nz-card-meta
         nzTitle="{{produto.name}}"
-        nzDescription="{{produto.description}}"
+        nzDescription="{{produto.description}} R$ {{produto.value}}"
         ><p>R$ {{produto.value}}</p></nz-card-meta
       >
     </nz-card>
     <ng-template #coverTemplate>
       <img
         alt="example"
-        src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+        src="assets/agenda.jpg"
       />
     </ng-template>
     <ng-template #actionEdit>
