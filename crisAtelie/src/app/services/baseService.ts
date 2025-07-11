@@ -1,15 +1,12 @@
-import { HttpClient } from "@angular/common/http";
-import { environment } from "./env";
-import { Injectable } from "@angular/core";
-import { IProdutos } from "../interfaces/IProdutos.interface";
+import { HttpClient } from '@angular/common/http';
+import { environment } from './env';
+import { IProdutos } from '../interfaces/IProdutos.interface';
 
-export class baseService{
-  constructor(
-    private readonly http: HttpClient,
-    complementoURL: string) {
-    this.complementoURL = complementoURL
+export class baseService {
+  constructor(private readonly http: HttpClient, complementoURL: string) {
+    this.complementoURL = complementoURL;
   }
-  complementoURL = ""
+  complementoURL = '';
   base = environment.baseUrl;
 
   get(id: number) {
@@ -21,13 +18,22 @@ export class baseService{
   }
 
   post(content: IProdutos) {
-    return this.http.post(this.base + `${this.complementoURL}`, content);
+    return this.http
+      .post(this.base + `${this.complementoURL}`, content)
+      .subscribe();
   }
 
-  put(content: IProdutos) {
-    console.log(this.base + `${this.complementoURL}`, content);
-    
-    return this.http.put(this.base + `${this.complementoURL}`, content);
+  put(id: number, content: IProdutos) {
+    return this.http
+      .put(this.base + `${this.complementoURL}?id=${id}`, content)
+      .subscribe();
+  }
+
+  delete(id: number) {
+    console.log(this.base + `${this.complementoURL}?id=${id}`);
+
+    return this.http
+      .delete(this.base + `${this.complementoURL}?id=${id}`)
+      .subscribe();
   }
 }
-

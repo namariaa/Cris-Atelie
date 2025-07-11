@@ -19,7 +19,7 @@ import com.cris.cris_atelie_back.infrastructure.entitys.Produto;
 @RestController
 @RequestMapping("/produto")
 public class ProdutoController{
-    private ProdutoService produtoService;
+    private final ProdutoService produtoService;
 
     public ProdutoController(ProdutoService produto){
         this.produtoService = produto;

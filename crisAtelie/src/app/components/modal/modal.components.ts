@@ -39,24 +39,23 @@ export class ModalComponent {
     this.isVisible = true;
   }
 
-  constructor (private produtoService : ProdutoService){}
+  constructor(private produtoService: ProdutoService) {}
 
   handleOk(form: NgForm): void {
     const valores = {
-      "name": form.value['nome'],
-      "description": form.value['descricao'],
-      "valor": form.value['valor'],
-    }
-    
+      name: form.value['nome'],
+      description: form.value['descricao'],
+      valor: form.value['valor'],
+    };
+
     if (this.tipo == 'criar') {
-      this.produtoService.post(valores);
-   
+      if (valores.name != '' && valores.description != '')
+        this.produtoService.post(valores);
+    } else {
+      this.produtoService.put(this.id, valores);
     }
-    else {
-      this.produtoService.put(valores);
-    }
-    
     this.isVisible = false;
+    window.location.reload();
   }
 
   handleCancel(): void {

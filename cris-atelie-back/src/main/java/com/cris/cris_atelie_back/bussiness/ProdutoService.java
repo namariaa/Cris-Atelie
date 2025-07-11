@@ -36,6 +36,7 @@ public class ProdutoService {
         this.produtos.deleteById(id);
     }
 
+    @Transactional 
     public void patchProduto(Integer id, Produto p){
         Produto salvo = getProduto(id);
          if (p.getName() != null) {
