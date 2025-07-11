@@ -1,4 +1,5 @@
 <div class="grid-container">
+  @if (produtos) {
   @for (produto of produtos; track produto){
   <div class="grid-item">
     <nz-card
@@ -10,7 +11,7 @@
       <nz-card-meta
         nzTitle="{{produto.name}}"
         nzDescription="{{produto.description}} R$ {{produto.value}}"
-        ><p>R$ {{produto.value}}</p></nz-card-meta
+        ><p>R$ {{produto.valor}}</p></nz-card-meta
       >
     </nz-card>
     <ng-template #coverTemplate>
@@ -27,4 +28,7 @@
       </ng-template>
   </div>
   }
+}@else{
+  <p>Sem produtos cadastrados</p>
+}
 </div>

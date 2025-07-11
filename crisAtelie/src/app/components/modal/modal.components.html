@@ -11,7 +11,6 @@
   nzOkText="Salvar"
   nzTitle="{{label}}"
   [nzFooter]="null"
-  (nzOnCancel)="handleCancel()"
 >
   <ng-container *nzModalContent>
     <form #formulario="ngForm" (ngSubmit)="handleOk(formulario)">
@@ -43,8 +42,8 @@
         <input
           nz-input
           name="valor"
-          [ngModel]="tipo === 'editar' ? default?.value : ''"
-          #valor="ngModel"
+          [ngModel] = "tipo === 'editar' ? default?.valor : ''"
+          #valor= "ngModel"
           placeholder="Informe o valor do produto.."
         />
       </nz-form-control>

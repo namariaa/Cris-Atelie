@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
-import { ProdutosList } from '../../banco';
+
 
 @Component({
   selector: 'app-popconfirm',
@@ -20,11 +20,13 @@ export class PopconfirmComponent {
   }
 
   confirm(id: number): void {
-    try {
-      ProdutosList.splice(id - 1, 1);
-      this.nzMessageService.success('Produto excluido com sucesso');
-    } catch {
-      this.nzMessageService.error('Não foi possível excluír produto');
-    }
+    console.log("Confirmou");
+    
+    // try {
+    //   ProdutosList.splice(id - 1, 1);
+    //   this.nzMessageService.success('Produto excluido com sucesso');
+    // } catch {
+    //   this.nzMessageService.error('Não foi possível excluír produto');
+    // }
   }
 }
