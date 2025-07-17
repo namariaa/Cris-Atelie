@@ -1,7 +1,6 @@
 <div class="grid-container">
-  @if (produtos) {
-  @for (produto of produtos; track produto){
-  <div class="grid-item">
+  @if (produtos) { @for (produto of produtos; track produto){
+  <div class="grid-item" (click)="detalhar(produto.id)">
     <nz-card
       style="width: 300px"
       [nzCover]="coverTemplate"
@@ -15,20 +14,24 @@
       >
     </nz-card>
     <ng-template #coverTemplate>
-      <img
-        alt="example"
-        src="assets/agenda.jpg"
-      />
+      <img alt="example" src="assets/agenda.jpg" />
     </ng-template>
     <ng-template #actionEdit>
-        <app-modal title="Editar produto" tipo="editar" label="Editar Produto" [id]="produto.id" buttonStyle="text" buttonIcon="edit" [default]="produto"/>
+      <app-modal
+        title="Editar produto"
+        tipo="editar"
+        label="Editar Produto"
+        [id]="produto.id"
+        buttonStyle="text"
+        buttonIcon="edit"
+        [default]="produto"
+      />
     </ng-template>
     <ng-template #actionEllipsis>
-        <app-popconfirm [id]="produto.id" />
-      </ng-template>
+      <app-popconfirm [id]="produto.id" />
+    </ng-template>
   </div>
-  }
-}@else{
+  } }@else{
   <p>Sem produtos cadastrados</p>
-}
+  }
 </div>
