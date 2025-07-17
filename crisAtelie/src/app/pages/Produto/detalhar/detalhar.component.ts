@@ -16,6 +16,6 @@ export class DetalharComponent {
   constructor(private router: Router) {}
 
   ngOnInit() {
-    console.log(this.router.url);
+    this.currentUrl = this.router.url.slice(1);
   }
 }
