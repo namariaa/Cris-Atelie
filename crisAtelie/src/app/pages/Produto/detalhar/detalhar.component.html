@@ -1,2 +1,8 @@
 <router-outlet />
-<h1>Produto</h1>
+@if (produto) {
+  <h1 class="produto-nome">{{ produto.name }}</h1>
+  <h5 class="produto-descricao">{{ produto.description }}</h5>
+  <p class="produto-valor">R$ {{ produto.valor}}</p>
+} @else{
+    <p>Dados não carregados</p>
+}

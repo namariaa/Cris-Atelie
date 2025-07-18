@@ -32,7 +32,6 @@ export class CardComponent {
       const response = await this.produtoService.getAll();
       response.subscribe((data) => {
         this.produtos = data;
-        console.log(data);
       });
     } catch (e) {
       console.error('Deu erro ao carregar produtos ', e);
