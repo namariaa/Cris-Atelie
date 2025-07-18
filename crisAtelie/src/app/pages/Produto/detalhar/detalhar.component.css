@@ -1,0 +1,24 @@
+.produto-nome {
+  color: #333333;
+  font-weight: bold;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.produto-descricao {
+  color: #a7a7a7;
+  font-weight: 400;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.produto-valor {
+  color: #e6b800;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.nao-carregado {
+  color: #999999;
+  font-style: italic;
+}

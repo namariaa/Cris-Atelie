@@ -1,11 +1,20 @@
 .page-header {
   width: 100%;
-  height: 300px;
   display: flex;
   align-items: center;
-  box-sizing: border-box; 
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background: white; /* ou outra cor de fundo para evitar sobreposição transparente */
+  transition: transform 0.4s ease, opacity 0.4s ease;
 }
+
+.page-header.hide {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
 .header-image {
-  width: 100%;     
-  display: block;   
+  width: 100%;
+  display: block;
 }
