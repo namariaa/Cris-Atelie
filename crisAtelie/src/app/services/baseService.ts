@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from './env';
 import { IProdutos } from '../interfaces/IProdutos.interface';
 
@@ -10,16 +10,21 @@ export class baseService {
   base = environment.baseUrl;
 
   get(id: number) {
-    return this.http.get(this.base + `${this.complementoURL}?id=${id}`);
+    return this.http.get(this.base + `${this.complementoURL}/${id}`);
   }
 
   getAll() {
-    return this.http.get(this.base + `${this.complementoURL}/all`);
+    return this.http.get(this.base + `${this.complementoURL}`);
   }
 
   post(content: IProdutos) {
+    console.log(this.base + `${this.complementoURL}`, content, {
+      headers: { 'Content-Type': 'application/json' },
+    });
     return this.http
-      .post(this.base + `${this.complementoURL}`, content)
+      .post(this.base + `${this.complementoURL}`, content, {
+        headers: { 'Content-Type': 'application/json' },
+      })
       .subscribe();
   }
 

@@ -1,3 +1,3 @@
 export const environment = {
-  baseUrl: 'http://localhost:8080'
+  baseUrl: 'https://super-duper-winner-9794jrxgp966c69j-8080.app.github.dev',
 };

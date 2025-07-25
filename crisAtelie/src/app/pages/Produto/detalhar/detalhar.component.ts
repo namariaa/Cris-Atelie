@@ -6,7 +6,7 @@ import { ProdutoService } from '../../../services/produto/produto.service';
 @Component({
   selector: 'app-detalhar',
   imports: [RouterOutlet],
-  standalone:true,
+  standalone: true,
   templateUrl: './detalhar.component.html',
   styleUrl: './detalhar.component.css',
 })
@@ -15,7 +15,6 @@ export class DetalharComponent {
   produto: any;
 
   constructor(private router: Router, private produtoService: ProdutoService) {}
-
 
   ngOnInit() {
     this.id = this.router.url.slice(1);
@@ -34,5 +33,4 @@ export class DetalharComponent {
       console.error('Deu erro ao carregar produto ', e);
     }
   }
-
 }

@@ -1,0 +1,38 @@
+img{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 2;
+}
+
+.login-form {
+    max-width: 300px;
+}
+
+.login-form-margin {
+    margin-bottom: 16px;
+}
+
+.login-form-forgot {
+    float: right;
+}
+
+.login-form-button {
+    width: 100%;
+}
+
+.bloco{
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 400px; /* ajuste conforme necessário */
+  height: 60vh;
+  z-index: 10; /* muito importante para ficar acima da imagem */
+  background-color: rgba(255, 255, 255, 0.95); /* leve transparência opcional */
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
