@@ -17,11 +17,11 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
-        return httpSecurity.csrf(csrf -> csrf.disable()).sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)).authorizeRequests(authorize -> authorize
-        .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
-        .requestMatchers(HttpMethod.POST, "/auth/cadastro").permitAll()
-        .requestMatchers(HttpMethod.POST, "/produto")
-        .hasRole("ADMIN").anyRequest().authenticated()).build();
+        return httpSecurity.csrf(csrf -> csrf.disable()).sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)).authorizeHttpRequests(authorize -> authorize
+        .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/auth/login")
+				.permitAll()
+				.anyRequest()
+				.authenticated()).build();
     }
 
     @Bean
