@@ -39,6 +39,15 @@ public class Usuario implements UserDetails{
     public UserRole papel;
     @Column(name="senha")
     public String senha;
+    @Column(name="nome")
+    public String nome;
+
+    public Usuario(String login, String nome, UserRole papel, String senha){
+        this.login = login;
+        this.nome = nome;
+        this.papel = papel;
+        this.senha = senha;
+    }
     
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
