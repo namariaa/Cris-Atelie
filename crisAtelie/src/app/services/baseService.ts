@@ -41,4 +41,20 @@ export class baseService {
       .delete(this.base + `${this.complementoURL}?id=${id}`)
       .subscribe();
   }
+
+  login(content: any) {
+      return this.http
+        .post(this.base + `${this.complementoURL}/login`, content, {
+          headers: { 'Content-Type': 'application/json' },
+        })
+        .subscribe();
+  }
+
+  cadastro(content: any) {
+      return this.http
+        .post(this.base + `${this.complementoURL}/cadastro`, content, {
+          headers: { 'Content-Type': 'application/json' },
+        })
+        .subscribe();
+  }
 }
