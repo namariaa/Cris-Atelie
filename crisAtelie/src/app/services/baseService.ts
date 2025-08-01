@@ -47,7 +47,7 @@ export class baseService {
         .post(this.base + `${this.complementoURL}/login`, content, {
           headers: { 'Content-Type': 'application/json' },
         })
-        .subscribe();
+        ;
   }
 
   cadastro(content: any) {

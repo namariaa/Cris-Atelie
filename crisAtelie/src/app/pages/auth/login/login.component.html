@@ -1,1 +1,35 @@
 <img src="assets/background.svg" alt="Background"/>
+<div class="bloco">
+    <nz-page-header nzTitle="Faça Login"/>
+    <form #formulario="ngForm" (ngSubmit)="handleOk(formulario)">
+      <nz-form-label [nzSpan]="null">Email</nz-form-label>
+      <nz-form-control
+        [nzSpan]="null"
+        nzErrorTip="Digite o seu email..."
+      >
+        <input
+          type="email"
+          nz-input
+          name="email"
+          [ngModel]=""
+          #email="ngModel"
+          placeholder="Informe a o seu email.."
+        />
+      </nz-form-control>
+      <nz-form-label [nzSpan]="null">Senha</nz-form-label>
+      <nz-form-control [nzSpan]="null" nzErrorTip="Insira uma senha de pelo menos 5 digitos">
+        <input
+          type="password"
+          nz-input
+          name="senha"
+          [ngModel] = ""
+          #senha= "ngModel"
+          placeholder="Digite sua senha..."
+        />
+      </nz-form-control>
+       
+      <div class="modal-footer">
+        <button nz-button nzType="primary" type="submit" style="width: 80%; align-self: center;">Salvar</button>
+      </div>
+    </form>
+</div>

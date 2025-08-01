@@ -28,7 +28,7 @@ export class RegisterComponent {
   constructor(private usuarioService: UsuarioService) {}
 
   handleOk(form: NgForm): void {
-    this.usuarioService.cadastro({"nome": form.value.nome, "login": form.value.email, "senha": form.value.senha});
+    this.usuarioService.cadastro({"nome": form.value.nome, "login": form.value.email, "senha": form.value.senha, "papel": "CLIENTE"});
     this.router.navigate(['/login']);
   }
 

@@ -15,7 +15,7 @@ import com.cris.cris_atelie_back.infrastructure.entitys.Usuario;
 
 @Service
 public class TokenService {
-    @Value("$(api.security.token.secret)") //Pega a senha da variável de ambiente
+    @Value("${api.security.token.secret}") //Pega a senha da variável de ambiente
     private String secret;
     
     
