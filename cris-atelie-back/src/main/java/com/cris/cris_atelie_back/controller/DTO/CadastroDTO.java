@@ -1,4 +1,4 @@
-package com.cris.cris_atelie_back.controller;
+package com.cris.cris_atelie_back.controller.DTO;
 
 import com.cris.cris_atelie_back.infrastructure.entitys.bases.UserRole;
 

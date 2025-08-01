@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cris.cris_atelie_back.bussiness.TokenService;
+import com.cris.cris_atelie_back.controller.DTO.AuthenticationDTO;
+import com.cris.cris_atelie_back.controller.DTO.CadastroDTO;
+import com.cris.cris_atelie_back.controller.DTO.LoginDTO;
 import com.cris.cris_atelie_back.infrastructure.entitys.Usuario;
 import com.cris.cris_atelie_back.infrastructure.repository.IUsuario;
 
@@ -26,12 +30,15 @@ public class AuthCotroller {
     @Autowired
     private IUsuario repository;
 
+    @Autowired 
+    TokenService tokenService;
+
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody @Valid AuthenticationDTO data){
         var senha = new UsernamePasswordAuthenticationToken(data.login(), data.senha());
         var auth = this.authenticationManager.authenticate(senha);
-
-        return ResponseEntity.ok().build();
+        var token = tokenService.generateToken((Usuario) auth.getPrincipal());
+        return ResponseEntity.ok(new LoginDTO(token));
     }
 
     @PostMapping("/cadastro")
