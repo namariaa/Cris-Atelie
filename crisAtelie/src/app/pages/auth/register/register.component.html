@@ -1,32 +1,55 @@
 <img src="assets/background.svg" alt="Background"/>
 <div class="bloco">
-     <form class="login-form" (ngSubmit)="submitForm()">
-      <nz-form-item>
-        <nz-form-control nzErrorTip="Please input your username!">
-          <nz-input-group nzPrefixIcon="user">
-            <input type="text" nz-input formControlName="username" placeholder="Username" />
-          </nz-input-group>
-        </nz-form-control>
-      </nz-form-item>
-      <nz-form-item>
-        <nz-form-control nzErrorTip="Please input your Password!">
-          <nz-input-group nzPrefixIcon="lock">
-            <input type="password" nz-input formControlName="password" placeholder="Password" />
-          </nz-input-group>
-        </nz-form-control>
-      </nz-form-item>
-      <div nz-row class="login-form-margin">
-        <div nz-col [nzSpan]="12">
-          <label nz-checkbox formControlName="remember">
-            <span>Remember me</span>
-          </label>
-        </div>
-        <div nz-col [nzSpan]="12">
-          <a class="login-form-forgot">Forgot password</a>
-        </div>
+    <nz-page-header nzTitle="Cadastre-se"/>
+    <form #formulario="ngForm" (ngSubmit)="handleOk(formulario)">
+      <nz-form-label [nzSpan]="null">Nome</nz-form-label>
+      <nz-form-control [nzSpan]="null" nzErrorTip="Coloque o nome do produto">
+        <input
+          nz-input
+          name="nome"
+          [ngModel]=""
+          #nome="ngModel"
+          placeholder="Digite seu nome.."
+        />
+      </nz-form-control>
+      <nz-form-label [nzSpan]="null">Email</nz-form-label>
+      <nz-form-control
+        [nzSpan]="null"
+        nzErrorTip="Digite o seu email..."
+      >
+        <input
+          type="email"
+          nz-input
+          name="email"
+          [ngModel]=""
+          #email="ngModel"
+          placeholder="Informe a o seu email.."
+        />
+      </nz-form-control>
+      <nz-form-label [nzSpan]="null">Senha</nz-form-label>
+      <nz-form-control [nzSpan]="null" nzErrorTip="Insira uma senha de pelo menos 5 digitos">
+        <input
+          type="password"
+          nz-input
+          name="senha"
+          [ngModel] = ""
+          #senha= "ngModel"
+          placeholder="Digite sua senha..."
+        />
+      </nz-form-control>
+       <nz-form-label [nzSpan]="null">Confirme sua senha</nz-form-label>
+      <nz-form-control [nzSpan]="null" nzErrorTip="Suas senhas não correspondem">
+        <input
+          type="password"
+          nz-input
+          name="confirma"
+          [ngModel] = ""
+          #confirma= "ngModel"
+          placeholder="Digite sua senha..."
+        />
+      </nz-form-control>
+      <div class="modal-footer">
+        <button nz-button nzType="primary" type="submit" style="width: 80%; align-self: center;">Salvar</button>
       </div>
-      <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Log in</button>
-      Or
-      <a>register now!</a>
     </form>
 </div>
