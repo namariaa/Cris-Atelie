@@ -10,20 +10,30 @@ export class baseService {
   base = environment.baseUrl;
 
   get(id: number) {
-    return this.http.get(this.base + `${this.complementoURL}/${id}`);
+    return this.http.get(this.base + `${this.complementoURL}/${id}`, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    });
   }
 
   getAll() {
-    return this.http.get(this.base + `${this.complementoURL}`);
+    return this.http.get(this.base + `${this.complementoURL}`, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    });
   }
 
   post(content: IProdutos) {
-    console.log(this.base + `${this.complementoURL}`, content, {
-      headers: { 'Content-Type': 'application/json' },
-    });
     return this.http
       .post(this.base + `${this.complementoURL}`, content, {
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
       })
       .subscribe();
   }
@@ -43,18 +53,16 @@ export class baseService {
   }
 
   login(content: any) {
-      return this.http
-        .post(this.base + `${this.complementoURL}/login`, content, {
-          headers: { 'Content-Type': 'application/json' },
-        })
-        ;
+    return this.http.post(this.base + `${this.complementoURL}/login`, content, {
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
 
   cadastro(content: any) {
-      return this.http
-        .post(this.base + `${this.complementoURL}/cadastro`, content, {
-          headers: { 'Content-Type': 'application/json' },
-        })
-        .subscribe();
+    return this.http
+      .post(this.base + `${this.complementoURL}/cadastro`, content, {
+        headers: { 'Content-Type': 'application/json' },
+      })
+      .subscribe();
   }
 }

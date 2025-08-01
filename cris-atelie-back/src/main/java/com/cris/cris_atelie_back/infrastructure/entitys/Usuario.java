@@ -52,17 +52,17 @@ public class Usuario implements UserDetails{
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
        if (this.papel == UserRole.ADM){
-        return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"), new SimpleGrantedAuthority("ROLE_USER"));
+        return List.of(new SimpleGrantedAuthority("ROLE_ADM"), new SimpleGrantedAuthority("ROLE_USER"));
        }
        else return List.of(new SimpleGrantedAuthority("ROLE_USER"));
     }
     @Override
     public String getPassword() {
-        throw new UnsupportedOperationException("Unimplemented method 'getPassword'");
+        return this.senha;
     }
     @Override
     public String getUsername() {
-        throw new UnsupportedOperationException("Unimplemented method 'getUsername'");
+        return this.login;
     }
 
 

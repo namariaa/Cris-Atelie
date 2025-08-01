@@ -29,6 +29,7 @@ public class ProdutoController{
     @PostMapping
     public ResponseEntity<Void> postProduto(@RequestBody Produto produto){
         try{
+            
             this.produtoService.postProduto(produto);
             return ResponseEntity.ok().build();
         }catch (Exception e) {

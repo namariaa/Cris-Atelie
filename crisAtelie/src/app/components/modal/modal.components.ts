@@ -44,18 +44,20 @@ export class ModalComponent {
   handleOk(form: NgForm): void {
     const valores = {
       name: form.value['nome'],
-      description: form.value['descricao'],
+      description: form.value['descricao'].replace(/\n/g, '\\n'),
       valor: form.value['valor'],
     };
 
     if (this.tipo == 'criar') {
-      if (valores.name != '' && valores.description != '')
-        this.produtoService.post(valores);
+      if (valores.name != '' && valores.description != '') console.log(valores);
+
+      this.produtoService.post(valores);
+      console.log('ALAlALA');
     } else {
       this.produtoService.put(this.id, valores);
     }
     this.isVisible = false;
-    window.location.reload();
+    // window.location.reload();
   }
 
   handleCancel(): void {

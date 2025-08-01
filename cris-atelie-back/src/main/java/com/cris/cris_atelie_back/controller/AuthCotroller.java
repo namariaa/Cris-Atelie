@@ -40,7 +40,8 @@ public class AuthCotroller {
         var senha = new UsernamePasswordAuthenticationToken(data.login(), data.senha());
         var auth = this.authenticationManager.authenticate(senha);
         var token = tokenService.generateToken((Usuario) auth.getPrincipal());
-        return ResponseEntity.ok(new LoginDTO(token));
+        var usuario = (Usuario) auth.getPrincipal();
+        return ResponseEntity.ok(new LoginDTO(token, usuario.papel, usuario.getId()));
     }
 
     @PostMapping("/cadastro")

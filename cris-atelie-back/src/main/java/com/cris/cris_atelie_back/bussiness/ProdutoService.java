@@ -21,7 +21,7 @@ public class ProdutoService {
 
     @Transactional 
     public void postProduto(Produto produto){
-        this.produtos.saveAndFlush(produto); //Salva e fecha a consexão com o banco
+        this.produtos.saveAndFlush(produto); //Salva e fecha a connexão com o banco
     }
 
     public List<Produto> getAllProdutos(){

@@ -10,28 +10,34 @@ import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
 
 @Component({
   selector: 'app-login',
-  imports: [ 
+  imports: [
     NzButtonModule,
     FormsModule,
     NzInputModule,
     NzFormModule,
     NzIconModule,
-    NzPageHeaderModule
+    NzPageHeaderModule,
   ],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrl: './login.component.css',
 })
 export class LoginComponent {
   private router = inject(Router);
-  
+
   constructor(private usuarioService: UsuarioService) {}
 
   handleOk(form: NgForm): void {
-    const response = this.usuarioService.login({"login": form.value.email, "senha": form.value.senha}).
-    subscribe((value: Object) => {
-      localStorage.setItem('authToken', String(value));
-      
-     });
+    const response = this.usuarioService
+      .login({ login: form.value.email, senha: form.value.senha })
+      .subscribe((value: any) => {
+        console.log('VALUE', value);
+
+        if (value != null) {
+          localStorage.setItem('token', value.token);
+          localStorage.setItem('id', value.id);
+          localStorage.setItem('papel', value.papel);
+        }
+      });
     this.router.navigate(['/']);
   }
 

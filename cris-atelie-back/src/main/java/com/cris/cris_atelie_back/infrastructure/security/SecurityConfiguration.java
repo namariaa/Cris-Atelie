@@ -20,13 +20,22 @@ public class SecurityConfiguration {
     @Autowired
     SecurityFilter securityFilter;
 
+    @Autowired
+    CorsFilter corsFilter;
+
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
-        return httpSecurity.csrf(csrf -> csrf.disable()).sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)).authorizeHttpRequests(authorize -> authorize
-        .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/auth/login", "/auth/cadastro")
-				.permitAll()
+        return httpSecurity.csrf(csrf -> csrf.disable()).sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+        .headers(headers -> headers.frameOptions(frameOptions -> frameOptions.sameOrigin()))
+        .authorizeHttpRequests(authorize -> authorize
+        .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/auth/login", "/auth/cadastro", "/h2-console/**").permitAll().requestMatchers(HttpMethod.GET,  "/produto", "/produto/all", "/produto/*").permitAll()
+        .requestMatchers(HttpMethod.POST, "/produto").permitAll()
+        .requestMatchers(HttpMethod.PUT,"/produto/**").hasRole("ADM")
+        .requestMatchers(HttpMethod.PATCH,"/produto/**").hasRole("ADM")
+        .requestMatchers(HttpMethod.DELETE,"/produto/**").hasRole("ADM")
 				.anyRequest()
-				.authenticated()).addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class).build();
+				.authenticated()).addFilterBefore(corsFilter, UsernamePasswordAuthenticationFilter.class).addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class).build();
     }
 
     @Bean

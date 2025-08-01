@@ -24,11 +24,16 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent {
   private router = inject(Router);
-  
+
   constructor(private usuarioService: UsuarioService) {}
 
   handleOk(form: NgForm): void {
-    this.usuarioService.cadastro({"nome": form.value.nome, "login": form.value.email, "senha": form.value.senha, "papel": "CLIENTE"});
+    this.usuarioService.cadastro({
+      nome: form.value.nome,
+      login: form.value.email,
+      senha: form.value.senha,
+      papel: 'ADM',
+    });
     this.router.navigate(['/login']);
   }
 
