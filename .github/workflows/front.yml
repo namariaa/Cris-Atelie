@@ -27,8 +27,3 @@ jobs:
         working-directory: crisAtelie
         run: |
           yarn install
-
-      - name: Build do projeto
-        working-directory: crisAtelie
-        run: |
-          yarn build
